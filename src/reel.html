@@ -1,0 +1,12 @@
+---
+title: Reel
+class: reel
+data:
+  reel: data/reel.js
+---
+{% block content %}
+  {% for video in data.reel %}
+    {{video.title}}
+    {{video.description}}
+  {% endfor %}
+{% endblock %}

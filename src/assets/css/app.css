@@ -1,0 +1,26 @@
+/**
+ * EarholeStudios.com
+ * Author: Nicholas Young
+ * Copyright 2015 Earhole Studios. All rights reserved.
+ */
+
+/**
+ * Mixins
+ */
+@define-mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/**
+ * General Styles
+ */
+@import 'vendor/normalize.css';
+
+/**
+ * Header
+ */
+@import 'elements/header.css';
