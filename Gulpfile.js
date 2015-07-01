@@ -1,3 +1,5 @@
+process.title = 'gulp';
+
 /**
  * Dependencies
  */
