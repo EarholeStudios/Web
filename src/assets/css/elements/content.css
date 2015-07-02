@@ -1,4 +1,5 @@
 div.content {
+  @mixin OswaldFont;
   width: 90%;
   max-width: 960px;
   margin: 0 auto 0 auto;
@@ -8,7 +9,7 @@ div.content {
     display: block;
 
     div.title {
-      lost-column: 2/12;
+      float: left;
 
       h2 {
         @mixin RalewayFont;
@@ -16,7 +17,6 @@ div.content {
         background: black;
         width: 150px;
         height: 150px;
-        min-width: 150px;
         overflow: hidden;
         border-radius: 150px;
         vertical-align: middle;
@@ -31,19 +31,30 @@ div.content {
     }
 
     .copy {
-      @mixin OswaldFont;
-      display: table-cell;
-      vertical-align: middle;
       font-size: 1.2em;
       line-height: 2em;
 
-      lost-column: 10/12;
+      float: right;
 
       span.emphasis { color: red; }
     }
   }
 
+  .map {
+    width: 600px;
+    height: 600px;
+    margin: 2em auto 0 auto;
+    border-radius: 50%;
+    border: 10px solid white;
+    box-shadow: 0px 0px 20px #999;
+  }
+
   .block {
+    margin-top: 2em;
     display: block;
+
+    &.highlight {
+      text-align: center;
+    }
   }
 }

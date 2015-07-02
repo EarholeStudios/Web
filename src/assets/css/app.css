@@ -29,6 +29,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 /**
  * General Styles
  */
