@@ -28,7 +28,9 @@ data:
     {% for video in data.reel %}
       <div class='video'>
         <a href='https://youtube.com/watch?v={{video.id}}'>
-          <img src='{{video.images.standard.url}}' />
+          <div class='thumbnail'>
+            <img src='{{video.images.maxres.url}}' />
+          </div>
           <h3>{{video.title}}</h3>
           <p>{{video.description}}</p>
         </a>
