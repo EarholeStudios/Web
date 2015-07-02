@@ -5,8 +5,32 @@ data:
   reel: data/reel.js
 ---
 {% block content %}
-  {% for video in data.reel %}
-    {{video.title}}
-    {{video.description}}
-  {% endfor %}
+  <header class='masthead'>
+    <div class='title'>
+      <h2>
+        <span>Reel</span>
+      </h2>
+    </div>
+    <div class='copy'>
+      <p>
+        <span class='emphasis'>An earhole is an intelligence portal.</span>
+        A gateway to emotion and knowledge. Words, sounds, music... anything
+        that goes into these canals has the power to change moods, conjure
+        ideas, and even encourage brand preferences. That is why Earhole
+        (the company) exists. It is a tangle of talent unlike any other
+        music or audio studio. Impossible to describe, but obvious once you
+        set foot inside the music, sound, and art studios of Earhole.
+      </p>
+    </div>
+  </header>
+
+  <div class='videos'>
+    {% for video in data.reel %}
+      <div class='video'>
+        <img src='{{video.images.standard.url}}' />
+        <h3>{{video.title}}</h3>
+        <p>{{video.description}}</p>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
