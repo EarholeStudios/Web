@@ -7,6 +7,7 @@ div.content {
   header.masthead {
     @mixin clearfix;
     display: block;
+    margin-bottom: 3em;
 
     div.title {
       float: left;

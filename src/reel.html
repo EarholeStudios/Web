@@ -20,12 +20,14 @@ data:
 
   <div class='videos'>
     {% for video in data.reel %}
-      <div class='sort'>
-        <div class='video youtube-{{video.id}}'>
+      <div class='grid'>
+        <div class='video'>
+          <div class='backdrop youtube-{{video.id}}'></div>
           <div class='overlay'>
-            <h3>{{video.title}}</h3>
-            <p>{{video.description | truncate(100)}}</p>
-            <a href='http://youtube.com/watch?v={{video.id}}'>Play</a>
+            <a href='http://youtube.com/watch?v={{video.id}}'>
+              <h3>{{video.title}}</h3>
+              <p>{{video.description | truncate(100)}}</p>
+            </a>
           </div>
         </div>
       </div>
@@ -34,8 +36,8 @@ data:
 
   <style type='text/css'>
     {% for video in data.reel %}
-      .video.youtube-{{video.id}} {
-        background: url({{video.images.high.url}}) center center;
+      div.backdrop.youtube-{{video.id}} {
+        background: url({{video.images.high.url}}) no-repeat;
         background-size: cover;
       }
     {% endfor %}
