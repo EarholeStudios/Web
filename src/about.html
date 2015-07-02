@@ -2,23 +2,33 @@
 title: About
 class: about
 ---
-{% block body %}
-  <div class="text-container clearfix">
-    <h1>AB<br/>OUT</h1>
-    <div class="about-copy">
+{% block content %}
+  <header class='masthead'>
+    <div class='title'>
+      <h2>
+        <span>Ab</span>
+        <span>Out</span>
+      </h2>
+    </div>
+    <div class='copy'>
       <p>
-        <em>An earhole is an intelligence portal.</em>
-        A gateway to emotion and knowledge. Words, sounds, music... anything that goes into these canals has the power to change moods, conjure ideas, even encourage brand preferences. That is why Earhole (the company) exists. It is a tangle of talent unlike any other music or audio studio. Impossible to describe but obvious once you set foot inside the music, sound and art studios of Earhole.
+        <span class='emphasis'>An earhole is an intelligence portal.</span>
+        A gateway to emotion and knowledge. Words, sounds, music... anything
+        that goes into these canals has the power to change moods, conjure
+        ideas, and even encourage brand preferences. That is why Earhole
+        (the company) exists. It is a tangle of talent unlike any other
+        music or audio studio. Impossible to describe, but obvious once you
+        set foot inside the music, sound, and art studios of Earhole.
       </p>
     </div>
+  </header>
+
+  <div class='block map'>
   </div>
-  <div class="map-container">
-    <div id="map"></div>
-    <div class="map-mask"></div>
-  </div>
-  <div class="contact-info">
-    <h2>11 W Illinois Street, Chicago, Illinois 60654</h2>
-    <h2>(312) 527-1775</h2>
-    <h2>Contact: <a href="mailto:adam@earholestudios.com">Adam Wiebe</a></h2>
+
+  <div class='block contact'>
+    <h3>11 W Illinois Street, Chicago, Illinois 60654</h3>
+    <h3>(312) 527-1775</h3>
+    <h3>Contact: <a href="mailto:adam@earholestudios.com">Adam Wiebe</a></h2>
   </div>
 {% endblock %}
