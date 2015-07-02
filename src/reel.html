@@ -20,19 +20,24 @@ data:
 
   <div class='videos'>
     {% for video in data.reel %}
-      <div class='video'>
-        <div class='thumbnail'>
-          <a href='https://youtube.com/watch?v={{video.id}}'>
-            <img src='{{video.images.high.url}}' />
-          </a>
-        </div>
-        <div class='copy'>
-          <a href='https://youtube.com/watch?v={{video.id}}'>
+      <div class='sort'>
+        <div class='video youtube-{{video.id}}'>
+          <div class='overlay'>
             <h3>{{video.title}}</h3>
-            <p>{{video.description}}</p>
-          </a>
+            <p>{{video.description | truncate(100)}}</p>
+            <a href='http://youtube.com/watch?v={{video.id}}'>Play</a>
+          </div>
         </div>
       </div>
     {% endfor %}
   </div>
+
+  <style type='text/css'>
+    {% for video in data.reel %}
+      .video.youtube-{{video.id}} {
+        background: url({{video.images.high.url}}) center center;
+        background-size: cover;
+      }
+    {% endfor %}
+  </style>
 {% endblock %}

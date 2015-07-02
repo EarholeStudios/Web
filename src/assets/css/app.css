@@ -48,3 +48,5 @@ html, body {
  */
 @import 'elements/header.css';
 @import 'elements/content.css';
+@import 'elements/about.css';
+@import 'elements/reel.css';

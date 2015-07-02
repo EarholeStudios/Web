@@ -1,0 +1,27 @@
+body.reel {
+  div.sort {
+    lost-column: 4/12;
+    @mixin clearfix;
+  }
+
+  div.video {
+    position: relative;
+    display: block;
+    border-radius: 100%;
+    height: 0;
+    padding: 50% 0;
+    background-size: contain;
+
+    div.overlay {
+      position: absolute;
+      width: 50%;
+      text-align: center;
+      top: 0px;
+      left: 25%;
+    }
+
+    &:hover {
+      filter: blur(5px);
+    }
+  }
+}
