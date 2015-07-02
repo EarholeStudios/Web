@@ -38,6 +38,8 @@ div.content {
       line-height: 2em;
 
       lost-column: 10/12;
+
+      span.emphasis { color: red; }
     }
   }
 
