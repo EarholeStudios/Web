@@ -42,16 +42,26 @@
       <nav class='main'>
         <ul>
           <li>
-            {% link "/about", "About" %}
+            <a href='/about' class='{% active_link "/about" %}'>
+              <span>Ab</span>
+              <span>Out</span>
+            </a>
           </li>
           <li>
-            {% link "/reel", "Reel" %}
+            <a href='/reel' class='{% active_link "/reel" %}'>
+              <span>Reel</span>
+            </a>
           </li>
           <li>
-            <a href='http://ftp.earholestudios.com'>FTP</a>
+            <a href='http://ftp.earholestudios.com'>
+              <span>FTP</span>
+            </a>
           </li>
           <li>
-            <a href='http://facebook.com/earholestudios'>Facebook</a>
+            <a href='http://facebook.com/earholestudios'>
+              <span>Face</span>
+              <span>book</span>
+            </a>
           </li>
         </ul>
       </nav>

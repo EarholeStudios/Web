@@ -1,23 +1,11 @@
 module.exports = function (acetate) {
   acetate.layout('**.*', '_layout:body');
 
-  acetate.helper('link', function(context, url, text) {
-    console.log(context.url, url);
-    // context is the current local variables on the page
-    var className = context.url === url ? 'active' : 'inactive';
+  acetate.helper('active_link', function (context, path) {
+    var current = context.url.replace('/', '')
+    ,   link    = path.replace('/', '');
 
-    // build a relative url to the page we are
-    // linking to using the relativeUrl variable
-    var relativeUrl = url;
-
-    // Nunjucks template for the link
-    var template = '<a href="{{relativeUrl}}" class="{{className}}">{{text}}</a>';
-
-    // finally render the nunjucks string with the variables
-    return acetate.nunjucks.renderString(template, {
-      relativeUrl: relativeUrl,
-      className: className,
-      text: text
-    });
+    if (current === link) return 'active';
+    return 'inactive';
   });
 };
