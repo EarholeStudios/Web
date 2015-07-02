@@ -7,6 +7,12 @@ header.main {
   div.logo {
     float: left;
 
+    @media (max-width: 650px) {
+      display: block;
+      float: none;
+      margin: 0 auto 0 auto;
+    }
+
     a.logo {
       display: inline-block;
       width: 300px;
@@ -20,6 +26,13 @@ header.main {
   nav.main {
     @mixin RalewayFont;
     float: right;
+
+    @media (max-width: 650px) {
+      display: block;
+      float: none;
+      margin: 0 auto 0 auto;
+      width: 90%;
+    }
 
     ul {
       padding: 0 0 0 0;
