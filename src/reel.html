@@ -27,9 +27,11 @@ data:
   <div class='videos'>
     {% for video in data.reel %}
       <div class='video'>
-        <img src='{{video.images.standard.url}}' />
-        <h3>{{video.title}}</h3>
-        <p>{{video.description}}</p>
+        <a href='https://youtube.com/watch?v={{video.id}}'>
+          <img src='{{video.images.standard.url}}' />
+          <h3>{{video.title}}</h3>
+          <p>{{video.description}}</p>
+        </a>
       </div>
     {% endfor %}
   </div>

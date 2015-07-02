@@ -40,6 +40,7 @@ var getVideos = function (playlist) {
 
       var ret = res.items.map(function (item) {
         return {
+          id: item.id,
           title: item.snippet.title,
           description: item.snippet.description,
           images: item.snippet.thumbnails,
