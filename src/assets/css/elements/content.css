@@ -11,6 +11,13 @@ div.content {
     div.title {
       float: left;
 
+      @media (max-width: 800px) {
+        display: block;
+        width: 90%;
+        margin: 0 auto 0 auto;
+        float: none;
+      }
+
       h2 {
         @mixin RalewayFont;
         display: table-cell;
@@ -30,11 +37,18 @@ div.content {
       }
     }
 
-    .copy {
+    div.copy {
       font-size: 1.2em;
-      line-height: 2em;
-
+      width: 80%;
+      vertical-align: middle;
       float: right;
+
+      @media (max-width: 800px) {
+        display: block;
+        width: 90%;
+        margin: 0 auto 0 auto;
+        float: none;
+      }
 
       span.emphasis { color: red; }
     }
