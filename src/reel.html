@@ -13,13 +13,7 @@ data:
     </div>
     <div class='copy'>
       <p>
-        <span class='emphasis'>An earhole is an intelligence portal.</span>
-        A gateway to emotion and knowledge. Words, sounds, music... anything
-        that goes into these canals has the power to change moods, conjure
-        ideas, and even encourage brand preferences. That is why Earhole
-        (the company) exists. It is a tangle of talent unlike any other
-        music or audio studio. Impossible to describe, but obvious once you
-        set foot inside the music, sound, and art studios of Earhole.
+        <span class='emphasis'>Check out the latest of what we've been up to.</span> Every year, Earhole produces hundreds of spots, each with it's own distinct personality. See how we can put our ingenuity to work for you.
       </p>
     </div>
   </header>
@@ -27,13 +21,17 @@ data:
   <div class='videos'>
     {% for video in data.reel %}
       <div class='video'>
-        <a href='https://youtube.com/watch?v={{video.id}}'>
-          <div class='thumbnail'>
-            <img src='{{video.images.maxres.url}}' />
-          </div>
-          <h3>{{video.title}}</h3>
-          <p>{{video.description}}</p>
-        </a>
+        <div class='thumbnail'>
+          <a href='https://youtube.com/watch?v={{video.id}}'>
+            <img src='{{video.images.high.url}}' />
+          </a>
+        </div>
+        <div class='copy'>
+          <a href='https://youtube.com/watch?v={{video.id}}'>
+            <h3>{{video.title}}</h3>
+            <p>{{video.description}}</p>
+          </a>
+        </div>
       </div>
     {% endfor %}
   </div>

@@ -73,18 +73,36 @@ div.content {
   }
 
   div.videos, div.video {
+    @mixin clearfix;
+    margin-bottom: 4em;
+
     .thumbnail {
-      width: 500px;
-      height: 500px;
+      float: left;
+      width: 80%;
+      width: 400px;
+      height: 400px;
       overflow: hidden;
       border-radius: 50%;
       border: 10px solid white;
       box-shadow: 0px 0px 20px #999;
+      position: relative;
 
       img {
-        max-height: 100%;
-        margin: 0 auto 0 auto;
+        height: 175%;
+        position: absolute;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        filter: blur(2px);
       }
+    }
+
+    .copy {
+      float: right;
+      width: 80%;
     }
   }
 }
