@@ -38,6 +38,8 @@ $(document).ready(function () {
      infoWindow.open(map, marker);
    });
 
+   if ($(window).width() > 662) infoWindow.open(map, marker);
+
    $(window).resize(function () {
      map.panTo(location);
 
