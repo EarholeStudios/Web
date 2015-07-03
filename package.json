@@ -30,7 +30,6 @@
     "postcss-mixins": "^0.3.0",
     "postcss-nested": "^0.3.2",
     "streamqueue": "^1.1.0",
-    "vinyl-paths": "^1.0.0",
     "youtube-api": "^1.0.0"
   },
   "scripts": {

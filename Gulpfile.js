@@ -6,8 +6,7 @@ process.title = 'gulp';
 var del     = require('del')
 ,   gulp    = require('gulp')
 ,   acetate = require('acetate')
-,   queue   = require('streamqueue')
-,   paths   = require('vinyl-paths');
+,   queue   = require('streamqueue');
 
 /**
  * Plugins/Setup
