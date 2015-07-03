@@ -1,3 +1,7 @@
+$(document).ready(function () {
+  $('.swipebox').swipebox();
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   /**
    * Setup

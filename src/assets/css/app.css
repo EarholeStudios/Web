@@ -46,6 +46,7 @@ html, body {
  * General Styles
  */
 @import 'vendor/normalize.css';
+@import 'vendor/swipebox.css';
 
 /**
  * Header
