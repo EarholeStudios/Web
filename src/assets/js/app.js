@@ -1,8 +1,9 @@
 $(document).ready(function () {
+  /**
+   * Kickoff Swipebox
+   */
   $('.swipebox').swipebox();
-});
 
-document.addEventListener('DOMContentLoaded', function () {
   /**
    * Setup
    */
@@ -35,5 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
    google.maps.event.addListener(marker, 'click', function () {
      infoWindow.open(map, marker);
+   });
+
+   $(window).resize(function () {
+     map.panTo(location);
+
+     if ($(this).width() <= 662) {
+       infoWindow.close();
+     } else {
+       infoWindow.open(map, marker);
+     }
    });
 });
