@@ -31,6 +31,18 @@ Now, open your browser and navigate to [localhost:9292](http://localhost:9292), 
 
 Then in a separate tab, open the source code in your preferred editor (like [Atom](http://atom.io)).
 
+**NOTE:**
+
+Before building the site, you will need a Server API Key for the YouTube API. Visit the [Google Developer Console](https://console.developers.google.com/project) for more information.
+
+Once you have a YouTube API key, create a file in the root directory of this project named ```.env```. Add your API key to it:
+
+```
+YOUTUBE_API_KEY=YourAPIKey
+```
+
+After saving, you can re-run ```gulp dev``` to build the site (including the Reel page, which will now have content).
+
 ## Deploying
 
 Once you're finished making edits, run:
