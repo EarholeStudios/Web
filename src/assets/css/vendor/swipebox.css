@@ -94,8 +94,6 @@ html.swipebox-html.swipebox-touch {
 
 #swipebox-bottom-bar,
 #swipebox-top-bar {
-  -webkit-transition: 0.5s;
-          transition: 0.5s;
   position: absolute;
   left: 0;
   z-index: 999;
@@ -104,11 +102,7 @@ html.swipebox-html.swipebox-touch {
 }
 
 #swipebox-bottom-bar {
-  bottom: -50px;
-}
-#swipebox-bottom-bar.visible-bars {
-  -webkit-transform: translate3d(0, -50px, 0);
-          transform: translate3d(0, -50px, 0);
+  bottom: 0px;
 }
 
 #swipebox-top-bar {
