@@ -57,5 +57,13 @@ body.reel {
         transition-delay: 0s;
       }
     }
+
+    /*
+     * IMPORTANT:
+     * Add this class if the browser is a mobile device.
+     */
+    &.touch {
+      div.overlay { visibility: visible; opacity: 1; }
+    }
   }
 }

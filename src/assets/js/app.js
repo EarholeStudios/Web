@@ -5,6 +5,15 @@ $(document).ready(function () {
   $('.swipebox').swipebox();
 
   /**
+   * Detect touch devices, and add .touch classes where needed.
+   */
+  var touchEnabled = 'ontouchstart' in document.documentElement;
+
+  if (touchEnabled && $('.video').length) {
+    $('.video').addClass('touch');
+  }
+
+  /**
    * Setup
    */
   var mapElement  = document.querySelector('.map')
