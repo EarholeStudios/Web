@@ -22,13 +22,13 @@ data:
     {% for video in data.reel %}
       <div class='grid'>
         <div class='video'>
-          <div class='backdrop youtube-{{video.id}}'></div>
-          <div class='overlay'>
-            <a href='http://youtube.com/watch?v={{video.id}}' rel='youtube' class='swipebox'>
+          <a href='http://youtube.com/watch?v={{video.id}}' rel='youtube' class='swipebox'>
+            <div class='backdrop youtube-{{video.id}}'></div>
+            <div class='overlay'>
               <h3>{{video.title}}</h3>
               <p>{{video.description | truncate(100)}}</p>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     {% endfor %}
