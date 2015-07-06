@@ -37,7 +37,13 @@ data:
   <style type='text/css'>
     {% for video in data.reel %}
       div.backdrop.youtube-{{video.id}} {
-        background: url({{video.images.high.url}}) no-repeat;
+        {% if video.images.maxres %}
+          background: url({{video.images.maxres.url}});
+        {% else %}
+          background: url({{video.images.high.url}});
+          background-position: 0px -45px;
+        {% endif %}
+        background-repeat: no-repeat;
         background-size: cover;
       }
     {% endfor %}
