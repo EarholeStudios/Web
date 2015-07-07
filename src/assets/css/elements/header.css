@@ -3,6 +3,11 @@ header.main {
   margin: 0 auto 0 auto;
   width: 90%;
   max-width: 960px;
+  z-index: 100;
+
+  > * {
+    z-index: 9995;
+  }
 
   div.logo {
     float: left;

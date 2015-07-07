@@ -20,8 +20,6 @@
 			action : function(num,dur,rep,sound) {
 				switch(num) {
 					case 0 :
-						// PULSE
-						//console.log("pulse: duration-"+dur+"s, number of repeats-"+rep+", does sound loop-"+sound);
 
 						function completeFunction() {
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
@@ -32,16 +30,24 @@
 
 					break;
 					case 1 :
-						// CURVES RIGHT
-						//console.log("curves: duration-"+dur+"s, number of repeats-"+rep+", does sound loop-"+sound);
 
 						function completeFunction() {
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
 
-						TweenMax.to(dotSettings.id, dur, {bezier:[{x:Math.floor(Math.random()*500), y:Math.floor(Math.random()*500)}, {x:Math.floor(Math.random()*5000), y:Math.floor(Math.random()*5000)}/*,  {x:Math.floor(Math.random()*500), y:Math.floor(Math.random()*500)} */], ease:Power1.easeInOut, onComplete:completeFunction});
-
-
+						TweenMax.to(dotSettings.id, dur, {
+              bezier:[
+                {
+                  x: Math.floor(Math.random() * 500),
+                  y: Math.floor(Math.random() * 500)
+                }, {
+                  x: Math.floor(Math.random() * 5000),
+                  y: Math.floor(Math.random() * 5000)
+                }
+              ],
+              ease:Power1.easeInOut,
+              onComplete:completeFunction
+            });
 					break;
 					case 2 :
 						// CURVES LEFT
@@ -51,9 +57,17 @@
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
 
-						TweenMax.to(dotSettings.id, dur, {bezier:[{x:Math.floor(Math.random()*-500), y:Math.floor(Math.random()*-500)}, {x:Math.floor(Math.random()*-5000), y:Math.floor(Math.random()*-5000)}/*,  {x:Math.floor(Math.random()*500), y:Math.floor(Math.random()*500)} */], ease:Power1.easeInOut, onComplete:completeFunction});
-
-
+						TweenMax.to(dotSettings.id, dur, {
+              bezier: [
+                {
+                  x:Math.floor(Math.random()*-500), y:Math.floor(Math.random()*-500)
+                }, {
+                  x:Math.floor(Math.random()*-5000), y:Math.floor(Math.random()*-5000)
+                }
+              ],
+              ease:Power1.easeInOut,
+              onComplete:completeFunction
+            });
 					break;
 					case 3 :
 						// RUNAWAY
@@ -63,8 +77,18 @@
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
 
-						var tl = new TimelineMax({repeat: rep, onComplete:completeFunction});
-						tl.to(dotSettings.id, dur, {width:20, height:20}).to(dotSettings.id, dur, {width:dotSettings.sizeVal, height:dotSettings.sizeVal});
+						var tl = new TimelineMax({
+              repeat: rep,
+              onComplete: completeFunction
+            });
+
+						tl.to(dotSettings.id, dur, {
+              width: 20,
+              height: 20
+            }).to(dotSettings.id, dur, {
+              width: dotSettings.sizeVal,
+              height: dotSettings.sizeVal
+            });
 
 					break;
 					case 4 :

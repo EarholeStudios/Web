@@ -20,7 +20,7 @@ $(document).ready(function () {
   	var objectCounter = 0;
   	var autoPopulate = null;
   	var hintInterval = '';
-    console.log(soundtrack);
+
   	var firstClick = true,
   		eightBitSounds = {},
   		eightBitFiles = samples,

@@ -1,3 +1,14 @@
+body.index {
+  overflow: hidden;
+  
+  div.object {
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    z-index: 90;
+  }
+}
+
 div.playground {
   width: 100%;
   min-height: 300px;
@@ -13,12 +24,5 @@ div.playground {
     @media (max-width: 700px) {
       display: none;
     }
-  }
-
-  div.object {
-    position: absolute;
-    border-radius: 50%;
-    border: none;
-    z-index: 100;
   }
 }
