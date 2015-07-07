@@ -25,6 +25,9 @@
   font-weight: 300;
 }
 
+@import 'vendor/normalize.css';
+@import 'vendor/swipebox.css';
+
 * {
   box-sizing: border-box;
 }
@@ -61,9 +64,6 @@ div.controls.close {
   background-position: 15px 12px;
   display: none;
 }
-
-@import 'vendor/normalize.css';
-@import 'vendor/swipebox.css';
 
 /**
  * Header
