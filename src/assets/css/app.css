@@ -59,6 +59,7 @@ div.controls.close {
   position: absolute;
   z-index: 9999;
   background-position: 15px 12px;
+  display: none;
 }
 
 @import 'vendor/normalize.css';
