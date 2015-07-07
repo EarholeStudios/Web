@@ -130,12 +130,12 @@ $(document).ready(function () {
   };
 
   /**
-   * Initialize `eventbus`
+   * Initialize `Controller`
    */
   Controller.initialize();
 
   /**
-   * Fire events on `click`, delegating events to the `eventsBus`
+   * Fire events on `click`, delegating events to the `Controller`.
    */
   $('.playground').click(function (event) {
     event.preventDefault();
