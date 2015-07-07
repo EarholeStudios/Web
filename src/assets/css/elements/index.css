@@ -1,6 +1,6 @@
 body.index {
   overflow: hidden;
-  
+
   div.object {
     position: absolute;
     border-radius: 50%;
@@ -12,6 +12,7 @@ body.index {
 div.playground {
   width: 100%;
   min-height: 300px;
+  cursor: crosshair;
 
   div.logo {
     width: 100%;
