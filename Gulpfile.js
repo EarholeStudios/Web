@@ -3,7 +3,8 @@ process.title = 'gulp';
 /**
  * Dependencies
  */
-var del     = require('del')
+var path    = require('path')
+,   del     = require('del')
 ,   gulp    = require('gulp')
 ,   acetate = require('acetate')
 ,   queue   = require('streamqueue');
@@ -14,11 +15,6 @@ var del     = require('del')
 var $ = {
   postcss:    require('gulp-postcss'),
   concat:     require('gulp-concat'),
-  csso:       require('gulp-csso'),
-  rev:        require('gulp-rev'),
-  revReplace: require('gulp-rev-replace'),
-  uglify:     require('gulp-uglify'),
-  cleanup:    require('gulp-cleanup'),
   nodemon:    require('gulp-nodemon'),
   livereload: require('gulp-livereload')
 };
@@ -72,41 +68,6 @@ gulp.task('build:sounds', function () {
     .pipe(gulp.dest('build/assets/sounds'));
 });
 
-gulp.task('build:rev', [
-  'build:css',
-  'build:js',
-  'build:img',
-  'build:sounds',
-  'build:pages'
-], function () {
-  var css = gulp.src('build/**/*.css')
-    .pipe($.csso());
-
-  var js = gulp.src('build/**/*.js')
-    .pipe($.uglify());
-
-  var img = gulp.src([
-    'build/**/*.jpg',
-    'build/**/*.png',
-    'build/**/*.gif'
-  ]);
-
-  return queue({ objectMode: true }, css, js, img)
-    .pipe($.rev())
-    .pipe(gulp.dest('build'))
-    .pipe($.cleanup())
-    .pipe($.rev.manifest())
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('build', ['build:rev'], function () {
-  var manifest = gulp.src('build/rev-manifest.json');
-
-  return gulp.src('build/**/*')
-    .pipe($.revReplace({ manifest: manifest }))
-    .pipe(gulp.dest('build'));
-})
-
 gulp.task('watch', function () {
   gulp.watch('src/**/*.html', ['build:pages']);
   gulp.watch('src/**/*.css', ['build:css']);
@@ -130,4 +91,12 @@ gulp.task('dev', [
   'build:sounds',
   'build:pages',
   'watch'
+]);
+
+gulp.task('build', [
+  'build:css',
+  'build:js',
+  'build:img',
+  'build:sounds',
+  'build:pages',
 ]);
