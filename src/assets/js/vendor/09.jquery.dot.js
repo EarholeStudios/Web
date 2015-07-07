@@ -50,9 +50,6 @@
             });
 					break;
 					case 2 :
-						// CURVES LEFT
-						//console.log("curves: duration-"+dur+"s, number of repeats-"+rep+", does sound loop-"+sound);
-
 						function completeFunction() {
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
@@ -70,9 +67,6 @@
             });
 					break;
 					case 3 :
-						// RUNAWAY
-						//console.log("runaway: duration-"+dur+"s, number of repeats-"+rep+", does sound loop-"+sound);
-
 						function completeFunction() {
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
@@ -101,27 +95,31 @@
 							dotSettings.destroyAction(Math.floor(Math.random()*2));
 						}
 
-						TweenMax.to(dotSettings.id, dur, {bezier:[{x:val1, y:val2}, {x:val3, y:0}, {x:0, y:0}], ease:Linear.easeNone, repeat: rep, onComplete:completeFunction});
-
-
+						TweenMax.to(dotSettings.id, dur, {
+              bezier:[
+                {
+                  x: val1, y:
+                  val2
+                }, {
+                  x: val3, y :0
+                }, {
+                  x: 0, y: 0
+                }
+              ],
+              ease: Linear.easeNone,
+              repeat: rep,
+              onComplete: completeFunction
+            });
 					break;
 				}
 			},
 			destroyAction : function(num) {
 				switch(num) {
 					case 0 :
-						// Grow and Fade Out
-						//console.log("Grow and Fade Out");
-
 						dotSettings.id.remove();
-
 					break;
 					case 1 :
-						// Shrink and Fade Out
-						//console.log("Shrink and Fade Out");
-
 						dotSettings.id.remove();
-
 					break;
 				}
 			}
@@ -131,7 +129,7 @@
 		function init() {
 
 			var bool = Math.floor(Math.random()*2);
-			if(bool == 0) {
+			if(bool === 0) {
 				dotSettings.id.css({
 					'border-style' : 'solid',
 					'border-color' : dotSettings.color[Math.floor(Math.random()*8)],
@@ -150,7 +148,6 @@
 					'top' : yVal,
 					'left' : xVal,
 					'opacity' : '0.'+ Math.floor(Math.random()*9+1)
-
 				});
 			}
 
@@ -159,7 +156,7 @@
 			} if(hint) {
 				dotSettings.action(3,2,0,dotSettings.soundLoop);
 			} else {
-				dotSettings.action(Math.floor(Math.random()*5),dotSettings.durationVal,dotSettings.repeatVal,dotSettings.soundLoop); //Math.floor(Math.random()*4)
+				dotSettings.action(Math.floor(Math.random()*5),dotSettings.durationVal,dotSettings.repeatVal,dotSettings.soundLoop);
 			}
 
 		}

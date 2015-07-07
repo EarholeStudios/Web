@@ -7,118 +7,89 @@ $(document).ready(function () {
   var samples    = window.samples || []
   ,   soundtrack = window.soundtrack || [];
 
+  /**
+   * Map over `samples` and `soundtrack` arrays, and return
+   * `buzz.sound` objects.
+   */
   samples = samples.map(function (sound) {
-    return '/assets/sounds/samples/' + sound;
+    return new buzz.sound('/assets/sounds/samples/' + sound, {
+      formats: ['mp3', 'ogg']
+    });
   });
 
   soundtrack = soundtrack.map(function (sound) {
-    return '/assets/sounds/soundtrack/' + sound;
+    return new buzz.sound('/assets/sounds/soundtrack/' + sound, {
+      formats: ['mp3', 'ogg'],
+      loop: true
+    });
   });
 
+  /**
+   * Build a global events bus.
+   */
+  var eventBus = {
+    state: {
+      sampleIndex: 0,
+      objectCount: 0,
+      activated: false
+    },
+    init: function () {
+      this.defaultState = this.state;
+    },
+    getState: function (key) {
+      return this.state[key];
+    },
+    setState: function (key, value) {
+      this.state[key] = value;
+    },
+    incrementState: function (key) {
+      if ('number' !== this.state[key]) return;
+      this.setState(key, (this.state[key] + 1));
+    },
+    resetState: function (key) {
+      if (key) return this.state[key] = this.defaultState[key];
+      this.state = this.defaultState;
+    },
+    addCircle: function () {
+      var container = $('.playground')
+      ,   element   = $(document.createElement('div'));
 
-  $(function() {
-  	var objectCounter = 0;
-  	var autoPopulate = null;
-  	var hintInterval = '';
+      element.addClass('object')
+      element.addClass(['object', this.getState('objectCount')].join('-'))
+      element.dot(event.pageX, event.pageY, false, true);
 
-  	var firstClick = true,
-  		eightBitSounds = {},
-  		eightBitFiles = samples,
-  		loops = {},
-  		backgroundLoops = soundtrack,
-  		firstLoop = Math.floor(Math.random()*backgroundLoops.length);
+      container.append(element);
+    },
+    fireSample: function (index) {
+      index = index || 0;
+      if (index > samples.length) index = (samples.length - 1);
+      samples[index].play();
+    },
+    fireSoundtrack: function (index) {
+      index = index || 0;
+      if (index > soundtrack.length) index = (soundtrack.length - 1);
+      if (!this.getState('activated')) return;
+      soundtrack[index].play();
+      firstClick = false;
+    },
+    cleanup: function () {
+      $('.playground .object').hide().remove();
+      $('.controls.close').hide();
+    }
+  };
 
-  	for(var i in eightBitFiles) {
-  		var soundFile = eightBitFiles[i];
-  		eightBitSounds[i] = new buzz.sound(soundFile, {
-  			formats: ["ogg", "mp3"]
-  		});
-  	}
+  /**
+   * Fire events on `click`, delegating events to the `eventsBus`
+   */
+  $('.playground').click(function (event) {
+    event.preventDefault();
+    eventBus.addCircle();
+    eventBus.fireSoundtrack();
+    eventBus.fireSample();
+  });
 
-  	for(var i in backgroundLoops) {
-  		var soundFile = backgroundLoops[i];
-  		loops[i] = new buzz.sound(soundFile, {
-  			formats: ["ogg", "mp3"],
-  			loop: true
-  		});
-  	}
-
-  	$('.playground').on('mouseover', function(event){
-  		var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  		$('body').append(stucture);
-  		$('#'+objectCounter).dot(event.pageX,event.pageY,false,true);
-  		objectCounter++;
-  	});
-
-  	$('.playground').on('click', function(event){
-  		$('#close-board').fadeIn();
-  		$('#board').show();
-  		if(firstClick) {
-  			clearInterval(hintInterval);
-  			loops[firstLoop].play();
-  			autoPopulate = setInterval(function(){
-  				for(i=0;i<Math.floor(Math.random()*20+5);i++) {
-  					var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  					$('.playground').append(stucture);
-  					$('#'+objectCounter).dot(Math.floor(Math.random()*2000), Math.floor(Math.random()*2000));
-  					objectCounter++;
-  				}
-
-  				eightBitSounds[Math.floor(Math.random()*eightBitFiles.length)].play();
-  			}, 2000);
-
-  			firstClick = false;
-  		}
-  		for(i=0;i<Math.floor(Math.random()*20+5);i++) {
-  			var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  			$('.playground').append(stucture);
-  			$('#'+objectCounter).dot(event.pageX, event.pageY);
-  			objectCounter++;
-  		}
-
-  		eightBitSounds[Math.floor(Math.random()*eightBitFiles.length)].play();
-  	});
-
-
-  	$('.playground').on('click', function(event){
-
-  		for(i=0;i<Math.floor(Math.random()*20+5);i++) {
-  			var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  			$('.playground').append(stucture);
-  			$('#'+objectCounter).dot(event.pageX, event.pageY);
-  			objectCounter++;
-  		}
-  		eightBitSounds[Math.floor(Math.random()*eightBitFiles.length)].play();
-  	});
-
-  	$('#close-board').on('click', function(event){
-  		for(i=0;i<20;i++) {
-  			var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  			$('body').append(stucture);
-  			$('#'+objectCounter).dot(event.pageX, event.pageY,true);
-  			objectCounter++;
-  		}
-
-  		clearInterval(autoPopulate);
-
-  		$(this).hide();
-  		$('#board').fadeOut('slow');
-  		loops[firstLoop].stop();
-  		setTimeout(function(){
-  			$('.object').remove();
-  		}, 7000);
-
-  		firstClick = true;
-  		firstLoop = Math.floor(Math.random()*backgroundLoops.length);
-
-  		eightBitSounds[0].play();
-  	});
-
-  	hintInterval = setInterval(function() {
-  		var stucture = '<div class="object" id="'+objectCounter+'"></div>';
-  		$('.playground').append(stucture);
-  		$('#'+objectCounter).dot(Math.floor(Math.random()*100+60),Math.floor(Math.random()*100+60),false,true);
-  		objectCounter++;
-  	}, 3000);
+  $('.controls.close').click(function (event) {
+    event.preventDefault();
+    eventBus.cleanup();
   });
 });
