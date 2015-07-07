@@ -1,3 +1,6 @@
+/**
+ * Dependencies
+ */
 var Promise = require('bluebird')
 ,   config  = require('config')
 ,   youtube = require('youtube-api')
@@ -11,6 +14,9 @@ youtube.authenticate({
   key: config.get('youtube.api_key')
 });
 
+/**
+ * Helpers
+ */
 var getPlaylist = function () {
   return new Promise(function (resolve, reject) {
     youtube.playlistItems.list({

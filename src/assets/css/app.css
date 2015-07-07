@@ -53,5 +53,6 @@ html, body {
  */
 @import 'elements/header.css';
 @import 'elements/content.css';
+@import 'elements/index.css';
 @import 'elements/about.css';
 @import 'elements/reel.css';

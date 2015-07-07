@@ -8,4 +8,8 @@ module.exports = function (acetate) {
     if (current === link) return 'active';
     return 'inactive';
   });
+
+  acetate.filter('to_json', function (input) {
+    return JSON.stringify(input);
+  });
 };

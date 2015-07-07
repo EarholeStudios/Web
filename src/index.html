@@ -1,12 +1,15 @@
 ---
 title: Earhole Index
 class: index
+data:
+  sounds: data/sounds.js
 ---
 {% block content %}
-  <div class="landing-logo">
-    <div id="trigger"></div>
-    <img src="/assets/img/landing_logo.png"
-         alt="desktop_landing_logo"
-         class="desktop-landing-logo">
+  <div class='playground'>
+    <div class='logo'></div>
   </div>
+  <script type='text/javascript'>
+    window.samples = {{ data.sounds.samples | to_json }};
+    window.soundtrack = {{ data.sounds.soundtrack | to_json }};
+  </script>
 {% endblock %}

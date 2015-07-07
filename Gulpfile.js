@@ -53,10 +53,11 @@ gulp.task('build:css', function () {
 });
 
 gulp.task('build:js', function () {
-  var lib = gulp.src('src/assets/js/vendor/*.js')
-  ,   app = gulp.src('src/assets/js/app.js')
+  var lib  = gulp.src('src/assets/js/vendor/*.js')
+  ,   incl = gulp.src('src/assets/js/includes/*.js')
+  ,   app  = gulp.src('src/assets/js/app.js')
 
-  return queue({ objectMode: true }, lib, app)
+  return queue({ objectMode: true }, lib, app, incl)
     .pipe($.concat('app.js'))
     .pipe(gulp.dest('build/assets/js'));
 });
@@ -66,10 +67,16 @@ gulp.task('build:img', function () {
     .pipe(gulp.dest('build/assets/img'));
 });
 
+gulp.task('build:sounds', function () {
+  return gulp.src('src/assets/sounds/**/*')
+    .pipe(gulp.dest('build/assets/sounds'));
+});
+
 gulp.task('build:rev', [
   'build:css',
   'build:js',
   'build:img',
+  'build:sounds',
   'build:pages'
 ], function () {
   var css = gulp.src('build/**/*.css')
@@ -104,6 +111,7 @@ gulp.task('watch', function () {
   gulp.watch('src/**/*.html', ['build:pages']);
   gulp.watch('src/**/*.css', ['build:css']);
   gulp.watch('src/**/*.js', ['build:js']);
+  gulp.watch('src/assets/sounds/*', ['build:sounds']);
   gulp.watch('build/**/*').on('change', $.livereload.changed);
 });
 
@@ -119,6 +127,7 @@ gulp.task('dev', [
   'build:css',
   'build:js',
   'build:img',
+  'build:sounds',
   'build:pages',
   'watch'
 ]);
